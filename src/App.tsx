@@ -1,10 +1,11 @@
-import { ProductsPage } from "./components/ProductsPage";
+import { Route, Routes } from "react-router-dom";
+import { ProductsPage } from "./pages/ProductsPage";
 
 const App = () => {
   return (
-    <>
-      <ProductsPage />
-    </>
+    <Routes>
+      <Route path="/" element={<ProductsPage />} />
+    </Routes>
   );
 };
 
