@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "antd/dist/reset.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import Layout from "./components/Layout";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <App />
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>  
+    </QueryClientProvider>
   </React.StrictMode>,
 );
