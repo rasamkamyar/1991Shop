@@ -1,8 +1,8 @@
 import { Card, Row } from "antd";
-// import type { Product } from "../features/types/types";
-import img from "../../public/86765.jpg"
+import type { Product } from "../features/types/types";
+import img from "../../public/86765.jpg";
 interface Props {
-  product: any;
+  product: Product;
 }
 
 const ProductsCard = ({ product }: Props) => {

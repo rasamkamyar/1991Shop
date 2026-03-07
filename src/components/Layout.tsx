@@ -1,14 +1,15 @@
 import { Footer, Header } from "antd/es/layout/layout";
-import React, { Children } from "react";
-
+import { Link } from "react-router-dom";
 
 interface Props {
-    children:any
+  children: any;
 }
-const Layout = ({ children }:Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <>
-      <Header>hii</Header>
+      <Header>
+        <Link to={"./"}> 1991</Link>
+      </Header>
       {children}
       <Footer>bye</Footer>
     </>

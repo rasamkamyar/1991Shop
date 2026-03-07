@@ -1,3 +1,5 @@
+import type { Dispatch } from "react";
+
 export interface Product {
   id: number;
   title: string;
@@ -9,4 +11,14 @@ export interface Product {
     rate: number;
     count: number;
   };
+}
+
+export interface intialStateModel {
+  products: Product[];
+  loading: boolean;
+}
+
+export interface ProductsContextType {
+  state: intialStateModel;
+  dispatch: Dispatch<any>;
 }
