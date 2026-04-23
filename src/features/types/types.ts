@@ -16,6 +16,10 @@ export interface Product {
 export interface intialStateModel {
   products: Product[];
   loading: boolean;
+  searchedProducts: Product[];
+  isSearch: boolean;
+  selectedCategory: Product[];
+  isCategorySelected: boolean;  
 }
 
 export interface ProductsContextType {

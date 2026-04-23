@@ -8,7 +8,6 @@ const ProductsProvider = ({ children }: any) => {
     reducer,
     initialData,
   );
-  console.log(state)
   return (
     <ProductsContext.Provider value={{ state, dispatch }}>
       {children}

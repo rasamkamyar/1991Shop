@@ -1,0 +1,79 @@
+.customHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to right, #4b5563, #d1d5db);
+  font-family: sans-serif;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: inline-block;
+  background: linear-gradient(to left, #12151a 27%, #eeeff0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.8s ease-in-out;
+}
+
+.title:hover {
+  transform: scale(1.2);
+}
+
+.navigation {
+  display: flex;
+  gap: 2rem;
+}
+
+.link {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--color-text-light);
+  position: relative;
+  padding: 0.5rem 0;
+  display: inline-block;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: var(--color-text-on-primary);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: var(--color-text-on-primary);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition:
+    width 0.8s ease-in-out,
+    opacity 0.8s ease-in-out,
+    transform 0.8s ease-in-out;
+}
+
+.link:hover::after {
+  width: 100%;
+  left: 0;
+  right: auto;
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    width 0.8s ease-in-out,
+    opacity 0.8s ease-in-out,
+    transform 0.8s ease-in-out;
+}
+
+.shoppingIcon {
+  font-size: 1.6rem;
+  color: var(--color-text-light);
+}

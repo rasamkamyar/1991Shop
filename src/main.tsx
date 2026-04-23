@@ -3,9 +3,10 @@ import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "antd/dist/reset.css";
+import "./styles/variables.css";
+
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import Layout from "./components/Layout";
 
 const queryClient = new QueryClient();
 
