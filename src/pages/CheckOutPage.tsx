@@ -2,7 +2,7 @@ import React from 'react'
 
 function CheckOutPage() {
   return (
-    <div>CheckOut Page</div>
+    <div>CheckO11111ut Page</div>
   )
 }
 
