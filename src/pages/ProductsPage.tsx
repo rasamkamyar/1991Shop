@@ -1,18 +1,14 @@
 import { Col, Input, Row, Select } from "antd";
 import ProductsCard from "../components/ProductsCard";
-import { mockData } from "../services/mockData";
 import { useProductsContext } from "../features/context/context";
 import Sider from "antd/es/layout/Sider";
-import { useEffect, useMemo } from "react";
 import type { Product } from "../features/types/types";
-// import type { Product } from "../features/types/types";
-// import { useProducts } from "../features/hooks/useProducts";
-// import type { Product } from "../features/types/types";
+import { useProducts } from "../features/hooks/useProducts";
 
 export const ProductsPage = () => {
-  // const { data, isLoading, isError } = useProducts();
-  // if (isLoading) return <p>Loading...</p>;
-  // if (isError) return <p>Error...</p>;
+  const { isLoading, isError } = useProducts();
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error...</p>;
   const { state, dispatch } = useProductsContext();
 
   const {
@@ -71,7 +67,7 @@ export const ProductsPage = () => {
 
   const resetHandler = () => {
     productsToDisplay = products;
-    console.log(productsToDisplay)
+    console.log(productsToDisplay);
   };
 
   return (
@@ -102,7 +98,7 @@ export const ProductsPage = () => {
             value: cat,
             label: cat,
           }))}
-           mode="multiple"
+          mode="multiple"
         />
       </Sider>
     </div>

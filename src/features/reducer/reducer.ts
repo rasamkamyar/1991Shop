@@ -1,8 +1,7 @@
-import { mockData } from "../../services/mockData";
 import type { intialStateModel } from "../types/types";
 
 export const initialData: intialStateModel = {
-  products: mockData,
+  products: [],
   loading: false,
   searchedProducts: [],
   isSearch: false,

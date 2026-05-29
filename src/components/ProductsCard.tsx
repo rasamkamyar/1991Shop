@@ -1,6 +1,5 @@
 import { Card } from "antd";
 import type { Product } from "../features/types/types";
-import img from "../assets/images/86765.jpg";
 interface Props {
   product: Product;
 }
@@ -18,7 +17,7 @@ const ProductsCard = ({ product }: Props) => {
       cover={
         <img
           alt={product.title}
-          src={img}
+          src={product.image}
           style={{ height: 200, objectFit: "contain", padding: 10 }}
         />
       }
