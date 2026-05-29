@@ -6,7 +6,7 @@ import type { Product } from "../features/types/types";
 import { useProducts } from "../features/hooks/useProducts";
 
 export const ProductsPage = () => {
-  const { isLoading, isError } = useProducts();
+  const { data,isLoading, isError } = useProducts();
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error...</p>;
   const { state, dispatch } = useProductsContext();
@@ -23,22 +23,22 @@ export const ProductsPage = () => {
   const catecories = Array.from(new Set(filteredCategory));
 
   let productsToDisplay: Product[];
-
+  
   if (isSearch && isCategorySelected) {
     productsToDisplay = searchedProducts.filter((item) =>
       selectedCategory.some((selected) => selected.id === item.id),
-    );
-  } else if (isSearch) {
-    productsToDisplay = searchedProducts;
-  } else if (isCategorySelected) {
-    productsToDisplay = selectedCategory;
-  } else {
-    productsToDisplay = products;
-  }
+  );
+} else if (isSearch) {
+  productsToDisplay = searchedProducts;
+} else if (isCategorySelected) {
+  productsToDisplay = selectedCategory;
+} else {
+  productsToDisplay = products;
+}
 
-  const handleChange = (e: any) => {
-    const searched = e.target.value.toLowerCase();
-    const filteredProduct = products.filter((item) =>
+const handleChange = (e: any) => {
+  const searched = e.target.value.toLowerCase();
+  const filteredProduct = products.filter((item) =>
       item.title.toLowerCase().includes(searched),
     );
 
@@ -50,7 +50,7 @@ export const ProductsPage = () => {
       },
     });
   };
-
+  
   const handleChangeCategory = (selected: { label: string; value: string }) => {
     const selectedCategory = productsToDisplay.filter(
       (item) => item.category === selected.value,
@@ -64,16 +64,16 @@ export const ProductsPage = () => {
       },
     });
   };
-
+  
   const resetHandler = () => {
     productsToDisplay = products;
-    console.log(productsToDisplay);
   };
+
 
   return (
     <div style={{ display: "flex" }}>
       <Row gutter={[-48, 16]}>
-        {productsToDisplay.map((product) => (
+        {data?.map((product) => (
           <Col lg={6} key={product.id}>
             <ProductsCard product={product} />
           </Col>
