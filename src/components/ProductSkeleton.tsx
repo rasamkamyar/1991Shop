@@ -1,19 +1,27 @@
 import { Card, Skeleton } from "antd";
 
-const { Meta } = Card;
-
 const ProductSkeleton = () => {
   return (
     <Card
-      hoverable
       style={{
-        marginTop: 10,
-        width: 300,
-        padding: 0,
+        marginTop: 16,
+        width: 280,
+        borderRadius: 12,
+        overflow: "hidden",
       }}
+      bodyStyle={{ padding: 16 }}
       cover={
-        <div style={{ height: 200, padding: 10 }}>
-          <Skeleton.Image active style={{ width: "100%", height: "100%" }} />
+        <div
+          style={{
+            height: 220,
+            padding: 20,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#fafafa",
+          }}
+        >
+          <Skeleton.Image style={{ width: 120, height: 160 }} active />
         </div>
       }
       actions={[
@@ -21,14 +29,22 @@ const ProductSkeleton = () => {
         <Skeleton.Button active size="small" />,
       ]}
     >
-      <Meta
-        title={<Skeleton.Input active style={{ width: 200 }} />}
-        description={<Skeleton.Input active style={{ width: 120 }} />}
-      />
+      {/* title */}
+      <div style={{ marginBottom: 10 }}>
+        <Skeleton.Input active block style={{ width: "100%" }} size="small" />
+      </div>
 
-      <p style={{ margin: "5px 0" }}>
-        <Skeleton.Input active size="small" style={{ width: 150 }} />
-      </p>
+      {/* price + category */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Skeleton.Input active style={{ width: 60 }} size="small" />
+        <Skeleton.Input active style={{ width: 80 }} size="small" />
+      </div>
     </Card>
   );
 };
