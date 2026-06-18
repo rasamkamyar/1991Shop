@@ -4,10 +4,11 @@ import { useProductsContext } from "../features/context/context";
 import Sider from "antd/es/layout/Sider";
 import type { Product } from "../features/types/types";
 import { useProducts } from "../features/hooks/useProducts";
+import ProductSkeleton from "../components/ProductSkeleton";
 
 export const ProductsPage = () => {
-  const { data,isLoading, isError } = useProducts();
-  if (isLoading) return <p>Loading...</p>;
+  const { data, isLoading, isError } = useProducts();
+
   if (isError) return <p>Error...</p>;
   const { state, dispatch } = useProductsContext();
 
@@ -23,22 +24,22 @@ export const ProductsPage = () => {
   const catecories = Array.from(new Set(filteredCategory));
 
   let productsToDisplay: Product[];
-  
+
   if (isSearch && isCategorySelected) {
     productsToDisplay = searchedProducts.filter((item) =>
       selectedCategory.some((selected) => selected.id === item.id),
-  );
-} else if (isSearch) {
-  productsToDisplay = searchedProducts;
-} else if (isCategorySelected) {
-  productsToDisplay = selectedCategory;
-} else {
-  productsToDisplay = products;
-}
+    );
+  } else if (isSearch) {
+    productsToDisplay = searchedProducts;
+  } else if (isCategorySelected) {
+    productsToDisplay = selectedCategory;
+  } else {
+    productsToDisplay = products;
+  }
 
-const handleChange = (e: any) => {
-  const searched = e.target.value.toLowerCase();
-  const filteredProduct = products.filter((item) =>
+  const handleChange = (e: any) => {
+    const searched = e.target.value.toLowerCase();
+    const filteredProduct = products.filter((item) =>
       item.title.toLowerCase().includes(searched),
     );
 
@@ -50,7 +51,7 @@ const handleChange = (e: any) => {
       },
     });
   };
-  
+
   const handleChangeCategory = (selected: { label: string; value: string }) => {
     const selectedCategory = productsToDisplay.filter(
       (item) => item.category === selected.value,
@@ -64,11 +65,22 @@ const handleChange = (e: any) => {
       },
     });
   };
-  
+
   const resetHandler = () => {
     productsToDisplay = products;
   };
 
+  if (isLoading) {
+    return (
+      <Row gutter={[-48, 16]}>
+        {Array.from({ length: 8 }).map((_, i) => (
+          <Col lg={6} key={i}>
+            <ProductSkeleton />
+          </Col>
+        ))}
+      </Row>
+    );
+  }
 
   return (
     <div style={{ display: "flex" }}>
