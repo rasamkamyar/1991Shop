@@ -10,4 +10,7 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+    open: true, // این باعث می‌شود موقع اجرا خودش مرورگر سیستم را باز کند
+  },
 })
